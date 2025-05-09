@@ -10,7 +10,7 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const correctPassword = "backside";
+  const correctPassword = "royalflush";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
