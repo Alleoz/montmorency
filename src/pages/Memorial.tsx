@@ -7,8 +7,8 @@ const Memorial = () => {
   const [audioLoaded, setAudioLoaded] = useState(false);
   const navigate = useNavigate();
 
-  // Simulating a message from Victor - replace with the actual message
-  const messageFromVictor = "The journey isn't about the destination, but the memories we create along the way. Remember the laughter, the tears, and the moments in between.";
+  // Simulating a message from Victor
+  const messageFromVictor = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo in magna tincidunt faucibus. Mauris nec lacus at nisi sagittis eleifend. Vivamus auctor, metus eget ultrices aliquam.";
   
   // Reference to audio element
   const audioRef = React.useRef<HTMLAudioElement | null>(null);

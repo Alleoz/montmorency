@@ -123,3 +123,63 @@
 .staggered-fade-in > *:nth-child(2) { animation-delay: 1.5s; }
 .staggered-fade-in > *:nth-child(3) { animation-delay: 2.5s; }
 .staggered-fade-in > *:nth-child(4) { animation-delay: 3.5s; }
+
+/* Glass container and shatter animation */
+.glass-container {
+  position: relative;
+  backdrop-filter: blur(2px);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+@keyframes shatter {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+  15% {
+    transform: scale(0.95) rotate(1deg);
+  }
+  25% {
+    transform: scale(0.98) rotate(-1deg);
+    filter: blur(0);
+  }
+  35% {
+    transform: scale(0.95) rotate(1.5deg);
+    filter: blur(1px);
+  }
+  45% { 
+    transform: scale(0.98);
+  }
+  50% {
+    transform: scale(1.02);
+    filter: blur(2px);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+    filter: blur(12px);
+  }
+}
+
+.animate-shatter {
+  animation: shatter 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes text-reveal {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

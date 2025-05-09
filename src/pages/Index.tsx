@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 const Index = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isShattered, setIsShattered] = useState(false);
   const navigate = useNavigate();
 
   const correctPassword = "royalflush";
@@ -19,10 +20,16 @@ const Index = () => {
     // Simple timeout to simulate checking
     setTimeout(() => {
       if (password.toLowerCase().trim() === correctPassword) {
-        // Set session storage to indicate user came from password page
-        sessionStorage.setItem("from_password", "true");
+        // Trigger the shatter animation
+        setIsShattered(true);
         toast.success("Password correct");
-        navigate("/memorial");
+        
+        // Wait for animation to complete before navigating
+        setTimeout(() => {
+          // Set session storage to indicate user came from password page
+          sessionStorage.setItem("from_password", "true");
+          navigate("/memorial");
+        }, 1000); // Match this to animation duration
       } else {
         toast.error("Incorrect password");
         setIsLoading(false);
@@ -31,9 +38,11 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center px-4">
-      <div className="w-full max-w-md mx-auto text-center animate-fade-in">
-        <div className="space-y-8 py-10">
+    <div className="min-h-screen bg-black text-white flex items-center justify-center px-4 overflow-hidden">
+      <div 
+        className={`w-full max-w-md mx-auto text-center ${isShattered ? 'animate-shatter' : ''}`}
+      >
+        <div className="space-y-8 py-10 glass-container">
           <p className="font-serif text-xl md:text-2xl italic leading-relaxed tracking-wide">
             You're close. But not yet done.
           </p>
